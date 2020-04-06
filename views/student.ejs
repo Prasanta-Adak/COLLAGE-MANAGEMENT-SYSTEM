@@ -1,0 +1,366 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>student</title>
+    <link rel="stylesheet" href="http://127.0.0.1:3000/css/student.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <button
+      class="btn btn-dark mt-5 ml-5"
+      onclick="window.location.href='http://127.0.0.1:3000/addStudent'"
+    >
+      ADD NEW STUDENT
+    </button>
+    <button
+      class="btn btn-dark mt-5 ml-1"
+      onclick="window.location.href='http://127.0.0.1:3000/addClass'"
+    >
+      ADD CLASS
+    </button>
+    <% result.forEach(function(student) { %>
+
+    <div class="card m-5">
+      <div class="card-header">
+        <h3>Details of Prof. <%= student.FNAME %> <%= student.LNAME %></h3>
+      </div>
+      <div class="card-body">
+        <h5>Name : <%= student.FNAME %> <%= student.LNAME %></h5>
+        <h5><%= student.USER_EMAIL %></h5>
+        <h5><%= student.COLLAGE_EMAIL %></h5>
+        <a
+          href="#"
+          class="btn btn-warning"
+          onclick="deleteProfile(event,'<%= student.COLLAGE_EMAIL %>')"
+          >DELETE</a
+        >
+        <a
+          href="#"
+          class="btn btn-dark"
+          data-toggle="modal"
+          data-target="#EditModal"
+          onclick="editProfile(event, '<%= student.COLLAGE_EMAIL %>')"
+          >EDIT</a
+        >
+        <a
+          href="#"
+          class="btn btn-primary"
+          onclick="AddMentor(event, '<%= student.COLLAGE_EMAIL %>')"
+          >Add mentor</a
+        >
+      </div>
+    </div>
+    <% }) %>
+    <!-- model coding -->
+    <div class="modal" id="EditModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Details</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/successfuly_updateStudent" method="POST">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputFname">Fast Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="fname"
+                    id="eFname"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputLname">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="lname"
+                    id="eLname"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="inputAddress">Email Address</label>
+                  <input
+                    type="email"
+                    name="userEmail"
+                    class="form-control"
+                    id="eUserEmail"
+                    placeholder="enter user email"
+                  />
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputAddress">Password</label>
+                  <input
+                    type="text"
+                    name="password"
+                    class="form-control"
+                    id="ePassword"
+                    placeholder="change student password"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="inputEmail">Collage Email Address</label>
+                  <input
+                    type="email"
+                    name="collageEmail"
+                    class="form-control"
+                    id="eCollageEmail"
+                    placeholder="Enter Collage Email Address"
+                  />
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputId">Collage Id</label>
+                  <input
+                    type="text"
+                    name="collageId"
+                    class="form-control"
+                    id="eCollageId"
+                    placeholder="Enter Collage id"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputVill">Village</label>
+                  <input
+                    type="text"
+                    name="village"
+                    id="eVillage"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputPost">Post Office</label>
+                  <input
+                    type="text"
+                    name="post"
+                    id="ePost"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputPin">PIN No:</label>
+                  <input
+                    type="number"
+                    name="pinNo"
+                    id="ePinNo"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">City</label>
+                  <input
+                    type="text"
+                    name="city"
+                    id="eCity"
+                    class="form-control"
+                    id="inputCity"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputState">State</label>
+                  <input
+                    type="text"
+                    name="state"
+                    id="eState"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- model coding -->
+    <!-- add mentor model coding -->
+    <div class="modal" id="AddMentorModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Mentor</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="mentorForm">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputFname">Fast Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="mentorFname"
+                    id="mentorFname"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputLname">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="mentorLname"
+                    id="mentorLname"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputAddress">Email Address</label>
+                  <input
+                    type="email"
+                    name="mentorEmail"
+                    class="form-control"
+                    id="mentorEmail"
+                  />
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="mentorMobile">Mobile</label>
+                  <input
+                    type="text"
+                    name="mentorMobile"
+                    class="form-control"
+                    id="mentorMobile"
+                  />
+                </div>
+                <input type="text" id="addStudentEmailForMentor" hidden />
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                onclick="addMentorFun(event)"
+              >
+                Save changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- model coding -->
+
+    <script>
+      function editProfile(event, email) {
+        $(document).ready(function() {
+          $.ajax({
+            url: "/getStuprofile/" + email,
+            method: "GET",
+            success: function(response) {
+              // console.log(response.result[0].FNAME);
+              $("#eFname").val(response.result[0].FNAME);
+              $("#eLname").val(response.result[0].LNAME);
+              $("#eUserEmail").val(response.result[0].USER_EMAIL);
+              $("#ePassword").val(response.result[0].PASSWORD);
+              $("#eCollageEmail").val(response.result[0].COLLAGE_EMAIL);
+              $("#eCollageId").val(response.result[0].COLLAGE_ID);
+              $("#eVillage").val(response.result[0].VILLAGE);
+              $("#ePost").val(response.result[0].POST);
+              $("#ePinNo").val(response.result[0].PIN_NO);
+              $("#eCity").val(response.result[0].CITY);
+              $("#eState").val(response.result[0].STATE);
+            }
+          });
+        });
+      }
+      function deleteProfile(event, email) {
+        $(document).ready(function() {
+          $.ajax({
+            url: /deleteStuDetails/ + email,
+            method: "GET",
+            success: function() {
+              alert("Data has been deleted !");
+            }
+          });
+        });
+      }
+
+      function AddMentor(event, email) {
+        $(document).ready(function() {
+          $("#AddMentorModal").modal();
+          $("#addStudentEmailForMentor").val(email);
+        });
+      }
+
+      function addMentorFun(event) {
+        event.preventDefault();
+        let strudentEmail = $("#addStudentEmailForMentor").val();
+        let mentorData = {
+          fname: $("#mentorFname").val(),
+          lname: $("#mentorLname").val(),
+          email: $("#mentorEmail").val(),
+          mobile: $("#mentorMobile").val()
+        };
+        $.ajax({
+          url: /addMentorDetails/ + strudentEmail,
+          method: "POST",
+          data: mentorData,
+          success: function(response) {
+            console.log(response);
+            if (response.success == true) {
+              document.getElementById("mentorForm").reset();
+              alert("mentor added successfully");
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

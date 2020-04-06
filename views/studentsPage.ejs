@@ -1,0 +1,337 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Student</title>
+    <link rel="stylesheet" href="http://127.0.0.1:3000/css/teacher.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container w-100"  style="border:1px solid red;background-color: black; height:200px;">
+    
+     
+    <div style="width: 100px; height: 100px; border-radius: 50%;" id="profile" class="bg-primary float-right mt-1" ></div>
+    <form action="/logoutStudent" method="POST">
+      <button type="submit" class="btn btn-danger float-right mt-3 mr-1">
+        Logout
+      </button>
+      <h3 style="text-align: center; color: antiquewhite;">Hi <%= studentsData.fname %> <%= studentsData.lname %></h3>
+    </div>
+    </form>
+    <div class="dark d-flex align-items-center">
+      <div class="container w-100 h-100">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link" href="#personal_info" data-toggle="tab"
+                  >Personal Info</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#timeTable" data-toggle="tab"
+                  >Time Table</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#notice" data-toggle="tab"
+                  >All Notice</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#mentor" data-toggle="tab"
+                  >My Mentor</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#task" data-toggle="tab"
+                  >Allocated Task</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#registration" data-toggle="tab"
+                  >Registration Form</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#changePassword" data-toggle="tab"
+                  >Change Password</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#gatePass" data-toggle="tab"
+                  >Gate Pass</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#feeDue" data-toggle="tab">Fee Due</a>
+              </li>
+            </ul>
+            <div class="tab-content py-4">
+              <div id="personal_info" class="tab-pane text-dark text-center">
+                <!-- <h3>
+                  <span style="color:red">NAME : </span>Mr.<%=
+                  studentsData.fname %> <%= studentsData.lname %>
+                </h3>
+
+                <h3>
+                  <EMAIL style="color:red">EMAIL :</EMAIL><%=
+                  studentsData.userEmail %>
+                </h3>
+                <h3>
+                  <span style="color:red">COLLAGE EMAIL :</span><%=
+                  studentsData.collageEmail %>
+                </h3>
+                <h3>
+                  <span style="color:red">COLLAGE ID :</span><%=
+                  studentsData.collageId %>
+                </h3>
+                <h3>
+                  <span style="color:red">ILLAGE :</span><%=
+                  studentsData.village %>
+                </h3>
+                <h3>
+                  <span style="color:red">POST OFFICE :</span><%=
+                  studentsData.post %>
+                </h3>
+                <h3>
+                  <span style="color:red">PIN NO :</span><%= studentsData.pinNo
+                  %>
+                </h3>
+                <h3>
+                  <span style="color:red">CITY :</span><%= studentsData.city %>
+                </h3>
+                <h3>
+                  <span style="color:red">STATE :</span><%= studentsData.state
+                  %>
+                </h3> -->
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="alert alert-primary" role="alert">
+                          Welcome, <%= studentsData.fname %> <%=
+                          studentsData.lname %> (you are currently enrolled in
+                          2017 -BE -CSE)
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="card" style="width: 10rem;">
+                              <div class="card-body text-dark">
+                                <a href="#">GATE PASS</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="card" style="width: 10rem;">
+                              <div class="card-body">
+                                <a href="#">ATTENDANCE</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="card" style="width: 10rem;">
+                              <div class="card-body">
+                                <a href="#">TIME TABLE</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="card" style="width: 10rem;">
+                              <div class="card-body">
+                                <a href="#">MARKS</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="card" style="width: 10rem;">
+                              <div class="card-body">
+                                <a href="#">FINE</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="card mr-1" style="width: 10rem;">
+                              <div class="card-body">
+                                <a href="#">FEE</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-5">
+                    <div class="card" style="height:400px;">
+                      <div class="card-header bg-dark text-light">
+                        Recent Activity
+                      </div>
+                      <div class="card-body scroll">
+                        <% result.forEach(function(notice){ %>
+                        <span class="bg-light" style="float: left;"></span>
+                          <%= notice.NOTICENAME %><i class="fa fa-download float-right mt-2" style="color:blue;" aria-hidden="true"></i>
+                        </span>
+                        <hr />
+                        <br />
+
+                        <% }) %> 
+                        <a href="#"><u>Show All Notices</u></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card" style="height:400px;">
+                      <div class="card-header bg-dark text-light">Alert</div>
+                      <div class="card-body">
+                        I am using bootstrap 4. I have 3 columns in a single
+                        row. One of the columns contains a list and the other
+                        two do not. I want only the column with the list to be
+                        scrollable but not the entire container, which means
+                        that the scrollbar muss appear only within that column.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="card bg-warning" style="height:400px;">
+                      Idea Box
+                      <textarea class="mt-3" rows="12"></textarea>
+                      <button
+                        type="submit"
+                        class="btn-dark mt-3"
+                        style="width: 100px; margin-left: 70px;;"
+                      >
+                        Send Idea
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-4">
+                    <div class="card" style="height:400px;">
+                      <div class="card-header bg-dark text-light">Alert</div>
+                      <div class="card-body">
+                        I am using bootstrap 4. I have 3 columns in a single
+                        row. One of the columns contains a list and the other
+                        two do not. I want only the column with the list to be
+                        scrollable but not the entire container, which means
+                        that the scrollbar muss appear only within that column.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="card" style="height:400px;">
+                      <div class="card-header bg-dark text-light">Alert</div>
+                      <div class="card-body scroll">
+                        I am using bootstrap 4. I have 3 columns in a single
+                        row. One of the columns contains a list and the other
+                        two do not. I want only the column with the list to be
+                        scrollable but not the entire container, which means
+                        that the scrollbar muss appear only within that column.
+                        I am using bootstrap 4. I have 3 columns in a single
+                        row. One of the columns contains a list and the other
+                        two do not. I want only the column with the list to be
+                        scrollable but not the entire container, which means
+                        that the scrollbar muss appear only within that column.
+                        I am using bootstrap 4. I have 3 columns in a single
+                        row. One of the columns contains a list and the other
+                        two do not. I want only the column with the list to be
+                        scrollable but not the entire container, which means
+                        that the scrollbar muss appear only within that column.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="card" style="height:150px;">
+                      <div class="card-header bg-dark text-light" style="height:40px;">Activity</div>
+                      <div class="card-body">
+                        I am using bootstrap 4.
+                      </div>
+                      <div class="card-header bg-dark text-light" style="height:20px;"></div>
+                    </div>
+                    <div class="card mt-3" style="height:230px;">
+                      <div class="card-header bg-dark text-light" style="height:40px;">Download section</div>
+                      <div class="card-body scrolla">
+                        1.I am using bootstrap 4. I have 3 columns in a single
+                        row.
+                        2.I am using bootstrap 4. I have 3 columns in a single
+                        row.
+                        \3.I am using bootstrap 4. I have 3 columns in a single
+                        row.
+                        1.I am using bootstrap 4. I have 3 columns in a single
+                        row.
+                        1.I am using bootstrap 4. I have 3 columns in a single
+                        row.
+                        1.I am using bootstrap 4. I have 3 columns in a single
+                        row.
+                      </div>
+                      <div class="card-header bg-dark text-light" style="height:10px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="timeTable" class="tab-pane text-warning"></div>
+              <div id="notice" class="tab-pane active text-warning">
+                <% result.forEach(function(notice){ %>
+
+                <div class="alert alert-primary mt-4" role="alert">
+                  <%= notice.NOTICENAME %>
+                  <button class="btn btn-dark">Download</button>
+                </div>
+
+                <% }) %>
+              </div>
+              <div id="mentor" class="tab-pane">
+                
+                <div class="card">
+                  <div class="card-header">
+                    My Mentor Details :
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Personal Information :</h5>
+                    <p class="card-text">Name : <%= mentorData.fname %> <%= mentorData.lname %></p>
+                    <h5>Contact Information :</h5>
+                    <span>EMAIL : <%= mentorData.email %></span><br/>
+                    <span>MOBILE : <%= mentorData.mobile %></span>
+                  </div>
+                </div>
+              </div>
+              <div id="task" class="tab-pane text-warning"></div>
+              <div id="registration" class="tab-pane text-warning"></div>
+              <div id="changePassword" class="tab-pane text-warning"></div>
+              <div id="gatePass" class="tab-pane text-warning"></div>
+              <div id="feeDue" class="tab-pane text-warning"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

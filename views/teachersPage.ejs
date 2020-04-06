@@ -1,0 +1,533 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Teacher</title>
+    <link rel="stylesheet" href="http://127.0.0.1:3000/css/teacher.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1 style="text-align: center;">Hi <%= teachersData.fname %></h1>
+    <form action="/logoutTeacher" method="POST">
+      <button type="submit" class="btn btn-danger float-right mr-5">
+        Logout
+      </button>
+    </form>
+    <div class="dark d-flex align-items-center">
+      <div class="container w-100 h-100">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  href="#personal_info"
+                  data-toggle="tab"
+                  >Personal Info</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#acadamic_info" data-toggle="tab"
+                  >Acadamic Info</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#time_table" data-toggle="tab"
+                  >Time Table</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#notice" data-toggle="tab">Notice</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Student" data-toggle="tab"
+                  >Student</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#attendance" data-toggle="tab"
+                  >Attendance</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#uploadMarks" data-toggle="tab"
+                  >Marks Upload</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#uploadTimetable" data-toggle="tab"
+                  >TimeTable Upload</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#change_password" data-toggle="tab"
+                  >Change Password</a
+                >
+              </li>
+            </ul>
+            <div class="tab-content py-4">
+              <div id="personal_info" class="tab-pane active float-left">
+                <h3>
+                  <span style="color:red">NAME : </span>Mr.<%=
+                  teachersData.fname %> <%= teachersData.lname %>
+                </h3>
+
+                <h3>
+                  <EMAIL style="color:red">EMAIL :</EMAIL><%=
+                  teachersData.userEmail %>
+                </h3>
+
+                <h3>
+                  <span style="color:red">ILLAGE :</span><%=
+                  teachersData.village %>
+                </h3>
+                <h3>
+                  <span style="color:red">POST OFFICE :</span><%=
+                  teachersData.post %>
+                </h3>
+                <h3>
+                  <span style="color:red">PIN NO :</span><%= teachersData.pinNo
+                  %>
+                </h3>
+                <h3>
+                  <span style="color:red">CITY :</span><%= teachersData.city %>
+                </h3>
+                <h3>
+                  <span style="color:red">STATE :</span><%= teachersData.state
+                  %>
+                </h3>
+              </div>
+              <div id="acadamic_info" class="tab-pane text-dark">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="card">
+                      <div class="card-header">
+                        Prof. <%= teachersData.fname %> <%= teachersData.lname
+                        %>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          Department : Computer Science and Engineering
+                        </h5>
+                        <h6>
+                          <span style="color:red">Collage Email :</span><%=
+                          teachersData.collageEmail %>
+                        </h6>
+                        <h6>
+                          <span style="color:red">Collage ID :</span><%=
+                          teachersData.collageId %>
+                        </h6>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div
+                      id="carouselExampleFade"
+                      class="carousel slide carousel-fade"
+                      data-ride="carousel"
+                    >
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img
+                            src="http://127.0.0.1:3000/images/imga.jpeg"
+                            class="d-block w-100"
+                            alt="imga"
+                          />
+                          <div class="carousel-caption d-none d-md-block">
+                            <h5>Second slide label</h5>
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit.
+                            </p>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img
+                            src="http://127.0.0.1:3000/images/imgb.jpeg"
+                            class="d-block w-100"
+                            alt="imgb"
+                          />
+                          <div
+                            class="carousel-caption d-none d-md-block text-primary"
+                          >
+                            <h5>Second slide label</h5>
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit.
+                            </p>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img
+                            src="http://127.0.0.1:3000/images/imgc.jpeg"
+                            class="d-block w-100"
+                            alt="imgc"
+                          />
+                          <div
+                            class="carousel-caption d-none d-md-block text-warning"
+                          >
+                            <h5>Second slide label</h5>
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <a
+                        class="carousel-control-prev"
+                        href="#carouselExampleFade"
+                        role="button"
+                        data-slide="prev"
+                      >
+                        <span
+                          class="carousel-control-prev-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a
+                        class="carousel-control-next"
+                        href="#carouselExampleFade"
+                        role="button"
+                        data-slide="next"
+                      >
+                        <span
+                          class="carousel-control-next-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="time_table" class="tab-pane text-dark text-center">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h3>Time Table</h3>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">No Data Found</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="notice" class="tab-pane text-dark text-center">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h3>Notice Board</h3>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">No Data Found</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="Student" class="tab-pane text-warning">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <h5 class="card-header text-center">Upload Notice</h5>
+                      <div class="card-body">
+                        <form
+                          action="/notice"
+                          method="POST"
+                          enctype="multipart/form-data"
+                        >
+                          <div class="form-group">
+                            <label for="exampleFormControlFile1"
+                              >Example file input</label
+                            >
+                            <input
+                              type="file"
+                              name="noticeUpload"
+                              class="form-control-file"
+                              id="exampleFormControlFile1"
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            class="btn btn-primary float-right"
+                          >
+                            Upload
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <% result.forEach(function(notice){ %>
+
+                <div class="alert alert-primary mt-4" role="alert">
+                  <%= notice.NOTICENAME %>
+                  <button class="btn btn-dark">Delete</button>
+                </div>
+
+                <% }) %>
+              </div>
+              <div id="attendance" class="tab-pane text-warning"></div>
+
+              <!-- marks upload section -->
+
+              <div id="uploadMarks" class="tab-pane text-warning">
+                <form>
+                  <div class="form-row m-5">
+                    <div class="form-group col-md-3">
+                      <label for="year">Select Year</label>
+                      <select class="form-control" id="year">
+                        <option value="All">All</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="stream">Select Stream</label>
+                      <select class="form-control" id="stream">
+                        <option value="All">All</option>
+                        <option value="CSE">CSE</option>
+                        <option value="ECE">ECE</option>
+                        <option value="CE">CE</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="section">Select Section</label>
+                      <select class="form-control" id="section">
+                        <option>All</option>
+                        <option>1L</option>
+                        <option>2L</option>
+                        <option>3L</option>
+                        <option>4L</option>
+                        <option>5L</option>
+                        <option>6L</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                      <div
+                        type="submit"
+                        class="btn btn-dark mt-4"
+                        onclick="searchStudent(event)"
+                      >
+                        Search
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <form>
+                  <div class="form-row m-5">
+                    <div class="form-group col-md-3">
+                      <label for="subject">Select Subject</label>
+                      <select class="form-control" id="subject">
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="C">C</option>
+                        <option value="C++">C++</option>
+                        <option value="NodeJs">NodeJs</option>
+                        <option value="React">React</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+                <ul class="list-group m-5" id="studentList"></ul>
+                <button
+                  onclick="addMarks()"
+                  class="btn btn-primary float-right"
+                >
+                  Add Marks
+                </button>
+              </div>
+              <!-- end marks upload section -->
+
+              <!-- start upload time table -->
+
+              <div id="uploadTimetable" class="tab-pane text-warning ml-5">
+                <form>
+                  <div class="form-row m-5">
+                    <div class="form-group col-md-3">
+                      <label for="year">Select Year</label>
+                      <select class="form-control" id="timeTable_year">
+                        <option value="All">All</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="stream">Select Stream</label>
+                      <select class="form-control" id="timeTable_stream">
+                        <option value="All">All</option>
+                        <option value="CSE">CSE</option>
+                        <option value="ECE">ECE</option>
+                        <option value="CE">CE</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="section">Select Section</label>
+                      <select class="form-control" id="timeTable_section">
+                        <option>All</option>
+                        <option>1L</option>
+                        <option>2L</option>
+                        <option>3L</option>
+                        <option>4L</option>
+                        <option>5L</option>
+                        <option>6L</option>
+                      </select>
+                    </div>
+                    <!-- <div class="form-group col-md-1">
+                      <div type="submit" class="btn btn-dark mt-4">
+                        Search
+                      </div>
+                    </div> -->
+                  </div>
+                </form>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <h5 class="card-header text-center">Upload Notice</h5>
+                      <div class="card-body">
+                        <form
+                          action="/timetable"
+                          method="POST"
+                          enctype="multipart/form-data"
+                        >
+                          <div class="form-group">
+                            <label for="exampleFormControlFile1"
+                              >Example file input</label
+                            >
+                            <input
+                              type="file"
+                              name="noticeUpload"
+                              class="form-control-file"
+                              id="exampleFormControlFile1"
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            class="btn btn-primary float-right"
+                          >
+                            Upload
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- end upload time table -->
+
+              <div
+                id="change_password"
+                class="tab-pane text-warning ml-5"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //@marks upload
+      function searchStudent(event) {
+        document.getElementById("studentList").innerHTML = "";
+        let searchData = {
+          year: $("#year").val(),
+          stream: $("#stream").val(),
+          section: $("#section").val()
+        };
+        $.ajax({
+          url: "/addMarks/search",
+          method: "POST",
+          data: searchData,
+          success: function(response) {
+            for (i = 0; i < response.result.length; i++) {
+              let li = document.createElement("LI");
+              li.setAttribute("class", "list-group-item list-group-item-light");
+              let input = document.createElement("INPUT");
+              input.setAttribute("type", "checkbox");
+              input.setAttribute("class", "form_check_input");
+              input.setAttribute("value", response.result[i].ID);
+
+              let input2 = document.createElement("INPUT");
+              input2.setAttribute("type", "number");
+              input2.setAttribute(
+                "id",
+                "marks" + response.result[i].COLLAGE_ID
+              );
+              let span = document.createElement("span");
+              span.innerHTML = response.result[i].ID;
+              li.append(input);
+              li.append(input2);
+              li.append(span);
+              document.getElementById("studentList").append(li);
+            }
+          }
+        });
+      }
+
+      function addMarks() {
+        let subject = $("#subject").val();
+        let className = document.getElementsByClassName("form_check_input");
+        let marksList = [];
+        for (i = 0; i < className.length; i++) {
+          if (className[i].checked === true) {
+            let obj = {
+              id: className[i].value,
+              marks: document.getElementById("marks" + className[i].value).value
+            };
+            marksList.push(obj);
+          }
+          $.ajax({
+            url: "/addStudentMarks",
+            method: "POST",
+            data: {
+              marksList: marksList,
+              subject: subject
+            },
+            success: function(response) {
+              console.log(response);
+            }
+          });
+        }
+      }
+
+      // @Student Time Table Upload
+    </script>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>addClass</title>
+    <link rel="stylesheet" href="http://127.0.0.1:3000/css/student.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h3 class="text-center">Add Class Of All Student</h3>
+    <form>
+      <div class="form-row m-5">
+        <div class="form-group col-md-4">
+          <label for="year">Select Year</label>
+          <select class="form-control" id="year">
+            <option value="All">All</option v>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="stream">Select Stream</label>
+          <select class="form-control" id="stream">
+            <option value="All">All</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="CE">CE</option>
+          </select>
+        </div>
+        <div class="form-group col-md-1">
+          <div
+            type="submit"
+            class="btn btn-dark mt-4"
+            onclick="searchStudent(event)"
+          >
+            Search
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="form-row m-5">
+      <div class="form-group col-md-4">
+        <label for="year">Add Section</label>
+        <select class="form-control" id="section">
+          <option>Add section</option>
+          <option>1L</option>
+          <option>2L</option>
+          <option>3L</option>
+          <option>4L</option>
+          <option>5L</option>
+          <option>6L</option>
+        </select>
+      </div>
+    </div>
+    <!-- <% result.forEach(function(student){ %>
+    <ul class="list-group m-5" id="studentList">
+      <li class="list-group-item list-group-item-light">
+        <input type="checkbox" class="form-check-input" id="check" /> <%=
+        student.FNAME %> <%= student.LNAME %>
+      </li>
+    </ul>
+    <% }) %> -->
+    <ul class="list-group m-5" id="studentList"></ul>
+    <button onclick="add()">add</button>
+    <script>
+      function searchStudent(event) {
+        document.getElementById("studentList").innerHTML = "";
+        let searchData = {
+          year: $("#year").val(),
+          stream: $("#stream").val()
+        };
+        $.ajax({
+          url: "/addClass/search",
+          method: "POST",
+          data: searchData,
+          success: function(response) {
+            for (i = 0; i < response.result.length; i++) {
+              let li = document.createElement("LI");
+              li.setAttribute("class", "list-group-item list-group-item-light");
+              let input = document.createElement("INPUT");
+              input.setAttribute("type", "checkbox");
+              input.setAttribute("class", "form_check_input");
+              input.setAttribute("value", response.result[i].COLLAGE_ID);
+
+              let input2 = document.createElement("INPUT");
+              input2.setAttribute("type", "text");
+              input2.setAttribute("hidden",'hidden');
+              input2.setAttribute("id", 'year'+response.result[i].COLLAGE_ID);
+              input2.setAttribute("value", response.result[i].YEAR);
+
+              let input3 = document.createElement("INPUT");
+              input3.setAttribute("type", "text");
+              input3.setAttribute("hidden",'hidden');
+              input3.setAttribute("id", 'stream'+response.result[i].COLLAGE_ID);
+              input3.setAttribute("value", response.result[i].STREAM);
+
+              let span = document.createElement("span");
+              span.innerHTML =
+                response.result[i].COLLAGE_ID +
+                " " +
+                response.result[i].FNAME +
+                " " +
+                response.result[i].LNAME;
+              li.append(input);
+              li.append(input2);
+              li.append(input3);
+              li.append(span);
+              document.getElementById("studentList").append(li);
+            }
+          }
+        });
+      }
+
+      function add() {
+        let section = $("#section").val();
+  
+        let addStudent = [];
+        let className = document.getElementsByClassName("form_check_input");
+        for (i = 0; i < className.length; i++) {
+          if (className[i].checked === true) {
+            let obj = {
+              id:className[i].value,
+              year:document.getElementById('year'+className[i].value).value,
+              stream:document.getElementById('stream'+className[i].value).value
+            }
+            addStudent.push(obj);
+          }
+        }
+        $.ajax({
+          url: "/addSection/",
+          method: "POST",
+          data: {
+            addStudent: addStudent,
+            section:section
+          },
+          success: function(response) {
+            console.log(response);
+            alert("successfully add section");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+#addHeading {
+  text-align: center;
+  color: aqua;
+  margin-bottom: 20px;
+}
+.scroll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.scrolla {
+  max-height: 230px;
+  overflow-y: auto;
+}
+#profile {
+  background-image: url(../profilePic/prasanta_Adak.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
